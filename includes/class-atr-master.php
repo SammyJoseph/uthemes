@@ -80,7 +80,7 @@ class ATR_Master{
     }
 
     private function get_version(){
-        return $this->theme_version;
+        return $this->version;
     }
 
     public function get_cargador(){
