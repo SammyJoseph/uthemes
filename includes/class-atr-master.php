@@ -46,6 +46,11 @@ class ATR_Master{
         * widgets personalizados para un sidebar
         */
         require_once ATR_DIR_PATH . 'includes/class-atr-widgets.php';
+
+        /* 
+        * La clase responsable de crear los CPT
+        */
+        require_once ATR_DIR_PATH . 'includes/class-atr-cpt.php';
     }
 
     private function set_idiomas(){
@@ -65,6 +70,7 @@ class ATR_Master{
         $this->cargador     = new ATR_Cargador;
         $this->atr_admin    = new ATR_Admin($this->get_theme_name(), $this->get_version());
         $this->atr_public   = new ATR_Public($this->get_theme_name(), $this->get_version());
+        $this->atr_cpt      = new ATR_CPT;
     }
 
     private function definir_admin_hooks(){
