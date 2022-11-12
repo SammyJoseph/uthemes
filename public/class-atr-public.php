@@ -114,6 +114,38 @@ class ATR_Public{
 
         // añade la función de imagen destacada a páginas y entradas
         add_theme_support('post-thumbnails');
+
+        // widgets
+        add_theme_support('widgets');
+        //remove_theme_support('widgets-block-editor'); /* vuelve a la versión antigua de widgets */
+    }
+
+    public function atr_register_sidebars(){
+        /* 
+        * Sidebar para el blog
+        */
+        register_sidebar(array(
+            'name' =>           __('Sidebar Blog', 'udemy'),
+            'id' =>             'blog',
+            'description' =>    __('Sidebar para el blog', 'udemy'),
+            'before_widget' =>  '<div class="%1$s" id="widget-blog">',
+            'after_widget' =>   '</div>',
+            'before_title' =>  '<h3 class="widget-blog">',
+            'after_title' =>   '</h3>',
+        ));
+
+        /* 
+        * Sidebar para la página de contacto
+        */
+        register_sidebar(array(
+            'name' =>           __('Sidebar Contacto', 'udemy'),
+            'id' =>             'contacto',
+            'description' =>    __('Sidebar para la página contacto', 'udemy'),
+            'before_widget' =>  '<div class="%1$s" id="widget-contacto">',
+            'after_widget' =>   '</div>',
+            'before_title' =>  '<h3 class="widget-contacto">',
+            'after_title' =>   '</h3>',
+        ));
     }
      
 }

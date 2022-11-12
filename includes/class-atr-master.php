@@ -40,11 +40,21 @@ class ATR_Master{
         * La clase responsable de definir todas las acciones en el área del lado del cliente/público
         */
         require_once ATR_DIR_PATH . 'public/class-atr-public.php';
+
+        /* 
+        * La clase responsable de crear nuevos widgets
+        * widgets personalizados para un sidebar
+        */
+        require_once ATR_DIR_PATH . 'includes/class-atr-widgets.php';
     }
 
     private function set_idiomas(){
         $atr_i18n = new ATR_i18n();
         $this->cargador->add_action('after_setup_theme', $atr_i18n, 'load_theme_textdomain');
+    }
+
+    public function registro_widgets(){
+        register_widget('ATR_Widgets');
     }
 
     private function cargar_instancias(){
@@ -65,6 +75,9 @@ class ATR_Master{
 
         $this->cargador->add_action( 'admin_menu', $this->atr_admin, 'add_menu' );
 
+        // gancho para widgets
+        $this->cargador->add_action( 'widgets_init', $this, 'registro_widgets' );
+
     }
 
     private function definir_public_hooks(){
@@ -73,6 +86,9 @@ class ATR_Master{
         
         // add menú frontend
         $this->cargador->add_action('init', $this->atr_public, 'atr_theme_support');
+
+        // registro de sidebars
+        $this->cargador->add_action( 'init', $this->atr_public, 'atr_register_sidebars' );
     }
 
     private function get_theme_name(){

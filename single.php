@@ -17,6 +17,10 @@ get_header(); ?>
                 <?php the_content(); ?>
             </div>
         </div>
+        <!-- Aquí el sidebar -->
+        <div class="col-sm-12 col-md-4 col-lg-5">
+            <?php get_sidebar('blog'); ?>
+        </div>
     </div>
 </div>
 
