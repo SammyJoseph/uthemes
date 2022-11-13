@@ -8,6 +8,10 @@
 get_header(); ?>
 
 <?php 
+    $paged = ( get_query_var('paged') ) ? absint( get_query_var('paged') ) : 1;
+?>
+
+<?php 
     $args = array(
         'post_type'         => 'cpt_habitaciones',
         'posts_per_page'    => 2,
@@ -35,6 +39,12 @@ get_header(); ?>
             </div>
         </div>
     <?php endwhile; wp_reset_postdata() ?> 
+    <div class="row-paginate-links">
+        <?php 
+            $paginado = new ATR_CPT;
+            $paginado->atr_pagination_post($rooms);
+        ?>
+    </div>
 </div> 
 
 <?php get_footer();

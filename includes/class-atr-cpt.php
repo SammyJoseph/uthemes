@@ -57,4 +57,29 @@ class ATR_CPT{
         flush_rewrite_rules();
     }
 
+    public function atr_pagination_post($data){
+
+            // paginación para el CPT
+            $big = 999999;
+
+            $args = array(
+                'base'                  => str_replace($big, '%#%', esc_url( get_pagenum_link( $big ))),
+                'format'                => '?paged=%#%',
+                'current'               => max(1, get_query_var('paged')),
+                'show_all'              => false,
+                'end_size'              => 1,
+                'mind_size'             => 2,
+                'prev_next'             => true,
+                'prev_text'             => __('<< Previo', 'udemy'),
+                'next_text'             => __('Siguiente >>', 'udemy'),
+                'type'                  => 'plain',
+                'add_args'              => false,
+                'add_fragment'          => '',
+                'before_page_number'    => '',
+                'after_page_number'     => '',
+                'total'                 => $data->max_num_pages
+            );
+
+            echo paginate_links( $args );
+    }
 }
