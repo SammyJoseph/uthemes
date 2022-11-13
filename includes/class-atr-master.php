@@ -84,6 +84,9 @@ class ATR_Master{
         // gancho para widgets
         $this->cargador->add_action( 'widgets_init', $this, 'registro_widgets' );
 
+        // gancho para el CPT
+        $this->cargador->add_action( 'init', $this->atr_cpt, 'atr_cpt_habitaciones' );
+
     }
 
     private function definir_public_hooks(){

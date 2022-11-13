@@ -9,7 +9,7 @@ class ATR_CPT{
     public function atr_cpt_habitaciones(){
         // etiquetas para el post type
         $labels = array(
-            'name'                  => _x('habitaciones', 'Post Type General Name', 'udemy'),
+            'name'                  => _x('Habitaciones', 'Post Type General Name', 'udemy'),
             'singular_name'         => _x('habitación', 'Post Type Singular Name', 'udemy'),
             'menu'                  => __('habitaciones', 'udemy'),
             'parent_item_colon'     => __('Menú Padre', 'udemy'),
@@ -37,17 +37,24 @@ class ATR_CPT{
             'show_in_nav_menus'     => true,
             'show_in_admin_bar'     => true,
             'menu_position'         => 5,
-            'menu_icon'             => 'dashicons_building',
+            'menu_icon'             => 'dashicons-building',
             'can_export'            => true,
             'has_archive'           => true,
             'exclude_from_search'   => false,
             'publicly_queryable'    => true,
             'capability_type'       => 'page',
+            // habilitando  la wp rest api
+            'show_in_rest'          => true,
+            'rest_base'             => 'rooms-api',
+            'rest_controller_class' => 'WP_REST_Posts_Controller'
         );
 
         // para registrar el CPT - cuidado de no repetir el slug de la página habitaciones
         // register_post_type('rooms', $args); // se puede poner un nombre diferente
         register_post_type('cpt_habitaciones', $args); // o agregar un prefijo
+
+        // refresca automáticamente lo enlaces de las publicaciones del CPT
+        flush_rewrite_rules();
     }
 
 }
