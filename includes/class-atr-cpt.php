@@ -106,7 +106,12 @@ class ATR_CPT{
             'show_ui'           => true,
             'show_admin_column' => true,
             'query_var'         => true,
-            'rewrite'           => array('slug' => 'tipo-habitacion')
+            'rewrite'           => array('slug' => 'tipo-habitacion'),
+
+            // campos api rest
+            'show_in_rest'          => true,
+            'rest_base'             => 'tipo-habitacion',
+            'rest_controller_class' => 'WP_REST_Terms_Controller'
         );
 
         register_taxonomy('tipo-habitacion', $post_types, $args);
