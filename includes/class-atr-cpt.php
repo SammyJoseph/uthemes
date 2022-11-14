@@ -13,7 +13,7 @@ class ATR_CPT{
             'singular_name'         => _x('habitación', 'Post Type Singular Name', 'udemy'),
             'menu'                  => __('habitaciones', 'udemy'),
             'parent_item_colon'     => __('Menú Padre', 'udemy'),
-            'all_items'             => __('Todas las habitaciones', 'udemy'),
+            'all_items'             => __('Ver Todas', 'udemy'),
             'view_item'             => __('Ver Menú', 'udemy'),
             'add_new_item'          => __('Agregar nueva habitación', 'udemy'),
             'add_new'               => __('Agregar Nueva', 'udemy'),

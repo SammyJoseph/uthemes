@@ -36,6 +36,23 @@ get_header(); ?>
                 <a href="<?php the_permalink(); ?>" class="rooms-content">
                     <?php the_content() ?>
                 </a>
+                <?php 
+                    // the_terms($post->ID, 'tipo-habitacion', 'Tipo: ', ', ', '.');
+                    $tax_habitacion = get_the_term_list( 
+                        $post->ID,
+                        'tipo-habitacion', 
+                        '<ul class="tipo-habitacion"><li>', 
+                        '</li><li>', 
+                        '</li></ul>'
+                    );
+                    echo $tax_habitacion;
+
+                    $terms = get_terms( array(
+                        'taxonomy'      => 'tipo-habitacion',
+                        'hide_empty'    => false
+                    ) );
+                    var_dump($terms);
+                ?>
             </div>
         </div>
     <?php endwhile; wp_reset_postdata() ?> 
