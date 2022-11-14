@@ -35,10 +35,25 @@ get_header(); ?>
                 </a>
                 <a href="<?php the_permalink(); ?>" class="rooms-content">
                     <?php the_content() ?>
+                    <?php 
+                        $custom_field = get_post_custom( $post->ID );
+                        // var_dump($custom_field);
+
+                        /* $helados = $custom_field['Helados'];
+                        echo "<ul>";
+                        foreach ($helados as $helado) {
+                            echo "<li> $helado </li> ";
+                        }
+                        echo "</ul>" */
+
+                        the_meta(); // deprecated
+                    ?>
+                    <!-- <?php var_dump(get_post_meta( 62, 'mimetadato', true )); ?> -->
+                    <!-- <?php var_dump(get_post_meta( 62, 'colores' )); ?> -->
                 </a>
                 <?php 
                     // the_terms($post->ID, 'tipo-habitacion', 'Tipo: ', ', ', '.');
-                    $tax_habitacion = get_the_term_list( 
+                    /* $tax_habitacion = get_the_term_list( 
                         $post->ID,
                         'tipo-habitacion', 
                         '<ul class="tipo-habitacion"><li>', 
@@ -51,7 +66,8 @@ get_header(); ?>
                         'taxonomy'      => 'tipo-habitacion',
                         'hide_empty'    => false
                     ) );
-                    var_dump($terms);
+                    var_dump($terms); */
+                
                 ?>
             </div>
         </div>

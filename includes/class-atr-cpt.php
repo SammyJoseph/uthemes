@@ -36,8 +36,8 @@ class ATR_CPT{
             'show_in_menu'          => true,
             'show_in_nav_menus'     => true,
             'show_in_admin_bar'     => true,
-            'menu_position'         => 5,
-            'menu_icon'             => 'dashicons-building',
+            'menu_position'         => 10,
+            'menu_icon'             => 'dashicons-admin-home',
             'can_export'            => true,
             'has_archive'           => true,
             'exclude_from_search'   => false,
@@ -116,5 +116,16 @@ class ATR_CPT{
 
         register_taxonomy('tipo-habitacion', $post_types, $args);
 
+    }
+
+    public function atr_metadatos_cpt(){
+        // add_post_meta( 62, 'mimetadato', 'un valor cualquiera' );
+        delete_post_meta( 62, 'mimetadato' );
+
+        /* add_post_meta( 62, 'colores', 'azul' );
+        add_post_meta( 62, 'colores', 'verde' );
+        add_post_meta( 62, 'colores', 'rojo' ); */
+
+        delete_post_meta( 62, 'colores' );
     }
 }
