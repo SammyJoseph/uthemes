@@ -16,7 +16,7 @@ class ATR_CPT{
             'all_items'             => __('Todas las habitaciones', 'udemy'),
             'view_item'             => __('Ver Menú', 'udemy'),
             'add_new_item'          => __('Agregar nueva habitación', 'udemy'),
-            'add_new'               => __('Agregar nueva habitación', 'udemy'),
+            'add_new'               => __('Agregar Nueva', 'udemy'),
             'edit_item'             => __('Editar habitación', 'udemy'),
             'update_item'           => __('Actualizar habitación', 'udemy'),
             'search_items'          => __('Buscar habitación', 'udemy'),
@@ -81,5 +81,35 @@ class ATR_CPT{
             );
 
             echo paginate_links( $args );
+    }
+
+    public function atr_taxonomia_habitaciones(){
+
+        $post_types = ['cpt_habitaciones'];
+        $labels = array(
+            'name'              => _x('Tipo de Habitación', 'taxonomy general name', 'udemy'),
+            'singular_name'     => _x('Tipo de Habitación', 'taxonomy general name', 'udemy'),
+            'search_items'      => __('Buscar tipo de habitación', 'udemy'),
+            'all_items'         => __('Todos los tipos de habitaciones', 'udemy'),
+            'parent_item'       => __('Tipo de habitación padre', 'udemy'),
+            'parent_item_colon' => __('Tipo de habitación padre', 'udemy'),
+            'edit_item'         => __('Editar tipo de habitación', 'udemy'),
+            'update_item'       => __('Actualizar tipo de habitación', 'udemy'),
+            'add_new_item'      => __('Agregar tipo de habitación', 'udemy'),
+            'new_item_name'     => __('Nuevo tipo de habitación', 'udemy'),
+            'menu_name'         => __('Tipo de habitación', 'udemy')
+        );
+
+        $args = array(
+            'hierarchical'      => true,
+            'labels'            => $labels,
+            'show_ui'           => true,
+            'show_admin_column' => true,
+            'query_var'         => true,
+            'rewrite'           => array('slug' => 'tipo-habitacion')
+        );
+
+        register_taxonomy('tipo-habitacion', $post_types, $args);
+
     }
 }

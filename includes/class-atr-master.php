@@ -86,6 +86,7 @@ class ATR_Master{
 
         // gancho para el CPT
         $this->cargador->add_action( 'init', $this->atr_cpt, 'atr_cpt_habitaciones' );
+        $this->cargador->add_action( 'init', $this->atr_cpt, 'atr_taxonomia_habitaciones' );
 
     }
 
