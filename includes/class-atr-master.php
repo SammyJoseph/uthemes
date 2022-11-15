@@ -56,6 +56,11 @@ class ATR_Master{
         * La clase responsable de crear los metaboxes
         */
         require_once ATR_DIR_PATH . 'includes/class-atr-metaboxes.php';
+
+        /* 
+        * La clase responsable de crear consultas a la BBDD
+        */
+        require_once ATR_DIR_PATH . 'includes/class-atr-database.php';
     }
 
     private function set_idiomas(){
@@ -77,6 +82,7 @@ class ATR_Master{
         $this->atr_public       = new ATR_Public($this->get_theme_name(), $this->get_version());
         $this->atr_cpt          = new ATR_CPT();
         $this->atr_metaboxes    = new ATR_Metaboxes();
+        $this->atr_database     = new ATR_Database();
     }
 
     private function definir_admin_hooks(){
