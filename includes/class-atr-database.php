@@ -17,7 +17,13 @@ class ATR_Database{
         $sql = $this->usuarios;
         // $resultado = $wpdb->get_var( $sql, 3, 2 );
         // $resultado = $wpdb->get_row( $sql );
-        $resultado = $wpdb->get_col( $sql, 1 );
+        /* $resultado = $wpdb->get_col( $sql, 1 );
+        var_dump($resultado); */
+
+        /* $resultado = $wpdb->get_results( $sql );
+        var_dump($resultado[1]->nombre); */
+        
+        $resultado = $wpdb->get_results( $sql, OBJECT_K );
         var_dump($resultado);
 
     }
