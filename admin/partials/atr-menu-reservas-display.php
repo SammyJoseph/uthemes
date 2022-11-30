@@ -6,7 +6,8 @@
         // $usuarios->atr_insert_usuarios();
         // $usuarios->atr_replace_usuarios();
         // $usuarios->atr_update_usuario();
-        $usuarios->atr_delete_usuario();
+        // $usuarios->atr_delete_usuario();
+        $usuarios->atr_sql_personalizado();
     ?>
 </div>
 

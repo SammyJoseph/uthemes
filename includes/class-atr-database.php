@@ -112,4 +112,51 @@ class ATR_Database{
 
     }
 
+    /* public function atr_sql_personalizado(){
+            
+        global $wpdb;
+
+        $tabla = $wpdb->prefix.'usuarios';
+        $sql = "SELECT * FROM $tabla WHERE id = 2 AND nombre = 'Boo'";
+        $resultado = $wpdb->query( $sql );
+
+        if ($resultado!=false) {
+            if ($resultado!=0) {
+                var_dump($wpdb->last_result);
+            }
+            else {
+                echo "No se encontraron registros para esta consulta";
+            }
+        }
+        else {
+            echo "Hubo un error en la consulta";
+        }
+    } */
+
+    public function atr_sql_personalizado(){
+            
+        global $wpdb;
+
+        $tabla = $wpdb->prefix.'usuarios';
+        $sql = "SELECT * FROM $tabla WHERE id = '%d' AND nombre = '%s'";
+        $args = [1, 'Sam'];
+
+        $query = $wpdb->prepare($sql, $args); // evita inyecciones sql (lleva intern. la función esc_sql())
+        $wpdb->show_errors(true);
+        $resultado = $wpdb->query( $query );
+        var_dump($wpdb->num_rows); // número de filas afectadas
+
+        if ($resultado!=false) {
+            if ($resultado!=0) {
+                var_dump($wpdb->last_result);
+            }
+            else {
+                echo "No se encontraron registros para esta consulta";
+            }
+        }
+        else {
+            echo "Hubo un error en la consulta";
+        }
+    }
+
 }
