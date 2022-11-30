@@ -3,7 +3,10 @@
     <?php 
         $usuarios = new ATR_Database;
         // $usuarios->atr_get_usuarios();
-        $usuarios->atr_insert_usuarios();
+        // $usuarios->atr_insert_usuarios();
+        // $usuarios->atr_replace_usuarios();
+        // $usuarios->atr_update_usuario();
+        $usuarios->atr_delete_usuario();
     ?>
 </div>
 

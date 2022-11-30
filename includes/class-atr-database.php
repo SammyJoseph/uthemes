@@ -51,4 +51,65 @@ class ATR_Database{
 
     }
 
+    public function atr_replace_usuarios(){
+        
+        global $wpdb;
+
+        $tabla = $wpdb->prefix.'usuarios';
+        $datos = [
+            'id'        => 4,
+            'nombre'    => 'Ramiro',
+            'apellido'  => 'Guzmán',
+            'telefono'  => 987654329
+        ];
+        $formato = [
+            '%d',
+            '%s',
+            '%s',
+            '%d'
+        ];
+
+        $resultado = $wpdb->replace( $tabla, $datos, $formato );
+        var_dump($resultado);
+
+    }
+
+    public function atr_update_usuario(){
+
+        global $wpdb;
+
+        $tabla = $wpdb->prefix.'usuarios';
+        $datos = [
+            'nombre'    => 'Gael'
+        ];
+        $formato = [
+            '%s'
+        ];
+        $where = [
+            'id'        => 4,
+            'nombre'    => 'Ramiro'
+        ];
+        $where_formato = ['%d', '%s'];
+
+        $resultado = $wpdb->update($tabla, $datos, $where, $formato, $where_formato);
+        var_dump($resultado);
+
+    }
+
+    public function atr_delete_usuario(){
+
+        global $wpdb;
+
+        $tabla = $wpdb->prefix.'usuarios';
+        $where = [
+            'id'        => 4,
+            'nombre'    => 'Gael'
+        ];
+        $where_formato = ['%d', '%s'];
+
+        $resultado = $wpdb->delete($tabla, $where, $where_formato);
+        var_dump($resultado);
+
+    }
+
 }
