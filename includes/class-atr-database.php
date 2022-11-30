@@ -24,6 +24,29 @@ class ATR_Database{
         var_dump($resultado[1]->nombre); */
         
         $resultado = $wpdb->get_results( $sql, OBJECT_K );
+        // var_dump($resultado);
+
+    }
+
+    public function atr_insert_usuarios(){
+        
+        global $wpdb;
+
+        $tabla = $wpdb->prefix.'usuarios';
+        $datos = [
+            'id'        => null,
+            'nombre'    => 'Ramiro',
+            'apellido'  => 'Campos',
+            'telefono'  => 987654321
+        ];
+        $formato = [
+            '%d',
+            '%s',
+            '%s',
+            '%d'
+        ];
+
+        $resultado = $wpdb->insert( $tabla, $datos, $formato );
         var_dump($resultado);
 
     }
